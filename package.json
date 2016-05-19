@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/hackuci/hackuci-internal#readme",
   "dependencies": {
+    "body-parser": "^1.15.1",
     "express": "^4.13.4",
     "mysql": "^2.10.2",
     "q": "^1.4.1"

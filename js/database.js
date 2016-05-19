@@ -36,3 +36,5 @@ Database.prototype.query = function (query, values = []) {
     });
     return deffered.promise;
 };
+
+module.exports = Database;

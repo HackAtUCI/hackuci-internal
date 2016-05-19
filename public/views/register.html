@@ -1,1 +1,43 @@
-register
+<div class="container">
+    <div class="row"></div>
+    <div class="row">
+        <div class="input-field col s3">
+            <input id="search" type="text" class="validate" ng-model="search">
+            <label for="search">Search</label>
+        </div>
+        <div class="col s2">
+            <a class="waves-effect waves-light red btn-large"><i class="material-icons left">add</i>Walk In</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12">
+            <table class="highlight">
+                <thead>
+                    <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in registerData | fuzzyBy: 'fname': search | limitTo:10" ng-click="getEntryInfo(x.email)">
+                        <td>{{x.fname}}</td>
+                        <td>{{x.lname}}</td>
+                        <td>{{x.email}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="register-modal" class="modal bottom-sheet">
+        <div class="modal-content">
+            <h4>{{userView.fname}} {{userView.lname}}</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+</div>

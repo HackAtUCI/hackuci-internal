@@ -1,1 +1,52 @@
-register
+<div class="container">
+    <div class="row"></div>
+    <div class="row">
+        <div class="input-field col s3">
+            <input id="search" type="text" class="validate" ng-model="search">
+            <label for="search">Search</label>
+        </div>
+        <div class="col s2">
+            <a class="waves-effect waves-light red btn-large"><i class="material-icons left">add</i>Walk In</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12">
+            <table class="highlight">
+                <thead>
+                    <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in registerData | fuzzyBy: 'fname': search | limitTo:10" ng-click="getEntryInfo(x.email)">
+                        <td>{{x.fname}}</td>
+                        <td>{{x.lname}}</td>
+                        <td>{{x.email}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="register-modal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <div class="container">
+                <h3>{{userView.fname}} {{userView.lname}}</h3>
+                <h5>Checkin status: {{userView.confirmed_presence > 0 ? 'Checked in' : "Not checked in"}}</h5>
+                <h5>email: {{userView.email}}</h5>
+                <h5>gender: {{userView.gender}}</h5>
+                <h5>shirt size: {{userView.shirt_size}}</h5>
+                <h5>dietary restrictions: {{userView.diet}}</h5>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="" class="modal-action modal-close waves-effect waves-green btn-flat black white-text" ng-click="checkinUser(userView.email)">Checkin</a>
+            <a href="" class="modal-action modal-close waves-effect waves-green btn-flat red white-text">Cancel</a>
+        </div>
+    </div>
+
+</div>

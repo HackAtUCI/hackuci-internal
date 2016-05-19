@@ -37,10 +37,15 @@ hackuci.controller('registerController', function($scope, $http) {
                 $scope.userView = response.data;
                 $('#register-modal').openModal();
             });
-    }
+    };
 
-
-
-
-
+    $scope.checkinUser = function(email) {
+        $http.post('/register/checkin', {email: email}).then(
+            function onSuccess(response) {
+                Materialize.toast($scope.userView.fname + ' was signed in!', 4000)
+            },
+            function onError(err) {
+            }
+        );
+    };
 });

@@ -31,13 +31,22 @@
         </div>
     </div>
 
-    <div id="register-modal" class="modal bottom-sheet">
+    <!-- Modal Structure -->
+    <div id="register-modal" class="modal modal-fixed-footer">
         <div class="modal-content">
-            <h4>{{userView.fname}} {{userView.lname}}</h4>
-            <p>A bunch of text</p>
+            <div class="container">
+                <h3>{{userView.fname}} {{userView.lname}}</h3>
+                <h5>Checkin status: {{userView.confirmed_presence > 0 ? 'Checked in' : "Not checked in"}}</h5>
+                <h5>email: {{userView.email}}</h5>
+                <h5>gender: {{userView.gender}}</h5>
+                <h5>shirt size: {{userView.shirt_size}}</h5>
+                <h5>dietary restrictions: {{userView.diet}}</h5>
+            </div>
         </div>
         <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            <a href="" class="modal-action modal-close waves-effect waves-green btn-flat black white-text" ng-click="checkinUser(userView.email)">Checkin</a>
+            <a href="" class="modal-action modal-close waves-effect waves-green btn-flat red white-text">Cancel</a>
         </div>
     </div>
+
 </div>

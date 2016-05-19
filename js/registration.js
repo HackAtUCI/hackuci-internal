@@ -50,4 +50,11 @@ router.post('/checkin', function(req, res) {
         });
 });
 
+router.post('/walkin', function(req, res) {
+    var walkin = req.data.walkin;
+});
+
+
+
+
 module.exports = router;

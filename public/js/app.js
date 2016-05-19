@@ -48,4 +48,10 @@ hackuci.controller('registerController', function($scope, $http) {
             }
         );
     };
+
+
+    $scope.walkin = function() {
+
+    };
+
 });

@@ -1,4 +1,4 @@
-var hackuci = angular.module('hackuci', ['ngRoute', 'angular.filter', 'ui.materialize']);
+var hackuci = angular.module('hackuci', ['ngRoute', 'angular.filter', 'ui.materialize', 'ngCookies']);
 
 hackuci.config(
     function($routeProvider) {
@@ -16,13 +16,26 @@ hackuci.config(
                 controller  : 'registerController'
             });
     }
-
-
-
 )
 
 
-hackuci.controller('mainController', function($scope) {
+hackuci.controller('mainController', function($scope, $http, $cookies, $window) {
+    $scope.$on('$locationChangeStart', function(event) {
+        var cookie = $cookies.get('ucnetid_auth')
+        $http.post('/auth/check', {token: cookie}).then(
+            function onSuccess(response) {
+                if(response.status === 401) {
+                    console.log('mada');
+                }
+            },
+            function onError(err) {
+                if (err.status === 401){
+                    $window.location.href = '/auth/redirect'
+                }
+            }
+        );
+
+    });
 });
 
 hackuci.controller('registerController', function($scope, $http) {

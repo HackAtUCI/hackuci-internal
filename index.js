@@ -9,6 +9,9 @@ var registration = require(global.rootDir + '/js/registration.js');
 
 var port = process.env.port || 3000;
 
+var auth = require(global.rootDir + '/js/auth.js');
+app.use(auth);
+
 app.use(bodyParser.json());
 
 app.use('/register', registration);

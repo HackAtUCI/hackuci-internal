@@ -34,7 +34,7 @@ router.post('/', function(req, res) {
 router.post('/checkin', function(req, res) {
     var email = req.body.email;
     if (email == null) {
-        res.status(400);
+        res.sendStatus(400);
     }
     db.query('update ' + registerTable + ' set confirmed_presence = 1 where email = ?', [email]).then(
         function onSuccess(results, fields) {
@@ -52,6 +52,11 @@ router.post('/checkin', function(req, res) {
 
 router.post('/walkin', function(req, res) {
     var walkin = req.data.walkin;
+    if (walkin == null) {
+        res.sendStatus(400);
+    }
+
+
 });
 
 

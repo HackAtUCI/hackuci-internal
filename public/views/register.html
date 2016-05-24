@@ -6,7 +6,7 @@
             <label for="search">Search</label>
         </div>
         <div class="col s2">
-            <a class="waves-effect waves-light red btn-large"><i class="material-icons left">add</i>Walk In</a>
+            <a class="waves-effect waves-light red btn-large" ng-click="openWalkin()"><i class="material-icons left">add</i>Walk In</a>
         </div>
     </div>
 
@@ -32,7 +32,7 @@
     </div>
 
     <!-- Modal Structure -->
-    <div id="register-modal" class="modal modal-fixed-footer">
+    <div id="userView-modal" class="modal modal-fixed-footer">
         <div class="modal-content">
             <div class="container">
                 <h3>{{userView.fname}} {{userView.lname}}</h3>
@@ -46,6 +46,44 @@
         <div class="modal-footer">
             <a href="" class="modal-action modal-close waves-effect waves-green btn-flat black white-text" ng-click="checkinUser(userView.email)">Checkin</a>
             <a href="" class="modal-action modal-close waves-effect waves-green btn-flat red white-text">Cancel</a>
+        </div>
+    </div>
+
+    <div id="walkin-modal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4>Add walkin</h4>
+            <div class="container">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="walkin_first_name" type="text" class="validate" ng-model="walkin.fname">
+                        <label for="walkin_first_name">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="walkin_last_name" type="text" class="validate" ng-model="walkin.lname">
+                        <label for="walkin_last_name">Last Name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="walkin_email" type="email" class="validate" ng-model="walkin.email">
+                        <label for="walkin_email">Email</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <select>
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                            <option value="Decline">Decline to Respond</option>
+                        </select>
+                        <label>Gender</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="" class="modal-action waves-effect waves-light btn-flat black white-text" ng-click="walkin()">Add</a>
+            <a href="" class="modal-action modal-close waves-effect waves-light btn-flat red white-text">Cancel</a>
         </div>
     </div>
 

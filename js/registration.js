@@ -51,10 +51,16 @@ router.post('/checkin', function(req, res) {
 });
 
 router.post('/walkin', function(req, res) {
-    var walkin = req.data.walkin;
+    var walkin = req.body.walkin;
     if (walkin == null) {
         res.sendStatus(400);
+        return
     }
+
+    const fname = walkin.fname || '';
+    const lname = walkin.lname || '';
+    const email = walkin.email || '';
+    const gender = walkin.gender || '';
 
 
 });

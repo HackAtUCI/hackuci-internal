@@ -35,7 +35,7 @@ hackuci.controller('registerController', function($scope, $http) {
         $http.post('/register', {email: email}).then(
             function onSuccess(response) {
                 $scope.userView = response.data;
-                $('#register-modal').openModal();
+                $('#userView-modal').openModal();
             });
     };
 
@@ -49,8 +49,19 @@ hackuci.controller('registerController', function($scope, $http) {
         );
     };
 
+    $scope.openWalkin = function(){
+        $('#walkin-modal').openModal();
+    }
 
     $scope.walkin = function() {
+        $http.post('register/walkin', {walkin: $scope.walkin}).then(
+            function onSuccess(response) {
+                $('#walkin-modal').closeModal();
+            },
+            function onError(err) {
+
+            }
+        )
 
     };
 

@@ -53,8 +53,8 @@ hackuci.controller('registerController', function($scope, $http) {
         $('#walkin-modal').openModal();
     }
 
-    $scope.walkin = function() {
-        $http.post('register/walkin', {walkin: $scope.walkin}).then(
+    $scope.walkinSubmit = function() {
+        $http.post('/register/walkin', {walkin: $scope.walkin}).then(
             function onSuccess(response) {
                 $('#walkin-modal').closeModal();
             },

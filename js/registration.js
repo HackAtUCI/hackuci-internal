@@ -1,7 +1,7 @@
 var database = require(global.rootDir + '/js/database.js');
 var db = new database(global.config.registration.registrationDatabaseName);
 
-var registerTable = global.config.registration.registrationTableName;
+const registerTable = global.config.registration.registrationTableName;
 
 var express = require('express');
 var router = express.Router();
@@ -38,16 +38,16 @@ router.post('/checkin', function(req, res) {
     }
     db.query('update ' + registerTable + ' set confirmed_presence = 1 where email = ?', [email]).then(
         function onSuccess(results, fields) {
-            if (results.affectedRows == 1){
+            if (results.affectedRows === 1){
                 res.json({email: email});
                 return;
             }
-            console.log(results);
             res.sendStatus(400);
         },
         function onError(err){
             res.json(err).status(500);
-        });
+        }
+    );
 });
 
 router.post('/walkin', function(req, res) {
@@ -57,12 +57,22 @@ router.post('/walkin', function(req, res) {
         return
     }
 
-    const fname = walkin.fname || '';
-    const lname = walkin.lname || '';
-    const email = walkin.email || '';
-    const gender = walkin.gender || '';
+    const fname = walkin.fname || 'bleh';
+    const lname = walkin.lname || 'bleh';
+    const email = walkin.email || 'bleh';
 
-
+    db.query("insert into " + registerTable + " values (?, ?, ?, ?, ?, ?, ?, ?)", [fname, lname, email, 'bleh', 'bleh', 'bleh', 1 , 2]).then(
+        function onSuccess(results, fields) {
+            if (results.affectedRows === 1) {
+                res.sendStatus(200);
+                return
+            }
+            res.sendStatus(400);
+        },
+        function onError(err) {
+            res.sendStatus(500);
+        }
+    );
 });
 
 
